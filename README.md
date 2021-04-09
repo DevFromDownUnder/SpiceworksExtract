@@ -8,7 +8,7 @@ This will let you save to CSV to import.
 
 Currently have Spiceworks agent files in here from debug but who knows if that is legal.
 
-Install the agent, just placing a dot in all the mandatory fields (server address and key.
+Install the agent, just placing a dot in all the mandatory fields (server address and key).
 Copy the SpiceworksExtract.exe into the program files folder and run it.
 
 Alternatively, install, copy all the files out elsewhere, then uninstall.
