@@ -15,17 +15,13 @@ Alternatively, install, copy all the files out elsewhere, then uninstall.
 
 **Example run**
 
-```
-PS C:\Program Files (x86)\Spiceworks\Agent> .\SpiceworksExtract.exe --addtimestamp --out="C:\SpiceworksData\"
---addTimestamp  - Adds timestamp to output name
---out="XXX"     - Specify output directory, default is current directory
+![image](https://user-images.githubusercontent.com/73286843/114206226-79116e00-999e-11eb-84d4-f9fdbb93c79f.png)
 
-Outputting to C:\SpiceworksData\tankpc.20210410-013122.000.csv
-```
 
 **Added to normal install path**
 
 ![image](https://user-images.githubusercontent.com/73286843/114204735-e0c6b980-999c-11eb-847b-754bdee572a1.png)
+
 
 **Copied out to another location**
 
