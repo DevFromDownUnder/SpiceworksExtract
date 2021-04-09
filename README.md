@@ -26,3 +26,6 @@ Alternatively, install, copy all the files out elsewhere, then uninstall.
 **Copied out to another location**
 
 ![image](https://user-images.githubusercontent.com/73286843/114205023-38fdbb80-999d-11eb-8579-57b19e43b8b9.png)
+
+
+![image](https://user-images.githubusercontent.com/73286843/114211704-4ec2af00-99a4-11eb-8320-d1586ff57cf6.png)
