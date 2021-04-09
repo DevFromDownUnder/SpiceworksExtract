@@ -29,8 +29,8 @@ namespace SpiceworksExtract
             var data = computer.Data;
 
             //Clean it up for CSV format a little
-            var headerRow = String.Join(",", data.Keys.Select((k) => '"' + k?.Replace('"', '\'')?.Replace('\n', '.')?.Replace('\r', '.') ?? "" + '"'));
-            var dataRow = String.Join(",", data.Values.Select((v) => '"' + v?.Replace('"', '\'')?.Replace('\n', '.')?.Replace('\r', '.') ?? "" + '"'));
+            var headerRow = String.Join(",", data.Keys.Select((k) => '"' + (k?.Replace('"', '\'')?.Replace('\n', '.')?.Replace('\r', '.') ?? "") + '"'));
+            var dataRow = String.Join(",", data.Values.Select((v) => '"' + (v?.Replace('"', '\'')?.Replace('\n', '.')?.Replace('\r', '.') ?? "") + '"'));
 
             var filename = outputDirectory + computer.Name + (addTimestamp ? DateTime.Now.ToString(".yyyyMMdd-HHmmss.000") : "") + ".csv";
 
