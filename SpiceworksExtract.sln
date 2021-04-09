@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31129.286
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpiceworksExtract", "SpiceworksExtract\SpiceworksExtract.csproj", "{6299192B-4CEF-4380-95AF-C150BC920B8E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6299192B-4CEF-4380-95AF-C150BC920B8E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6299192B-4CEF-4380-95AF-C150BC920B8E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6299192B-4CEF-4380-95AF-C150BC920B8E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6299192B-4CEF-4380-95AF-C150BC920B8E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E4797080-2B95-4544-BE50-1A3B20DFEFDB}
+	EndGlobalSection
+EndGlobal
