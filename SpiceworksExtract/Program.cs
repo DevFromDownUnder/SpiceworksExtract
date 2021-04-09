@@ -9,8 +9,20 @@ namespace SpiceworksExtract
         //Super dirty and no error handling but seems to work
         private static void Main(string[] args)
         {
-            //just a contains to any of the standards work (addTimestamp, -addTimestamp, --addTimestamp, /addTimestamp)
-            var addTimestamp = args?.Any((a) => a?.ToLower()?.Contains("addtimestamp") ?? false) ?? false;
+            Console.WriteLine("--addTimestamp  - Adds timestamp to output name");
+            Console.WriteLine("--out=\"XXX\"     - Specify output directory, default is current directory");
+
+            var addTimestamp = args?.Any((a) => a?.ToLower()?.Equals("--addtimestamp") ?? false) ?? false;
+
+            var outputDirectory = "";
+
+            if (args?.Any((a) => a?.ToLower()?.StartsWith("--out=") ?? false) ?? false)
+            {
+                var outArg = args.First((a) => a?.ToLower()?.StartsWith("--out=") ?? false);
+                var outValue = outArg.Substring("--out=".Length);
+
+                outputDirectory = outValue.Trim('"');
+            }
 
             var computer = new Spiceworks.Agent.Service.Os.Windows.Message.ComputerInfo().GetComputer();
 
@@ -20,9 +32,12 @@ namespace SpiceworksExtract
             var headerRow = String.Join(",", data.Keys.Select((k) => '"' + k?.Replace('"', '\'')?.Replace('\n', '.')?.Replace('\r', '.') ?? "" + '"'));
             var dataRow = String.Join(",", data.Values.Select((v) => '"' + v?.Replace('"', '\'')?.Replace('\n', '.')?.Replace('\r', '.') ?? "" + '"'));
 
-            Directory.CreateDirectory("data");
+            var filename = outputDirectory + computer.Name + (addTimestamp ? DateTime.Now.ToString(".yyyyMMdd-HHmmss.000") : "") + ".csv";
 
-            File.WriteAllLines("data\\" + computer.Name + (addTimestamp ? DateTime.Now.ToString(".yyyyMMdd-HHmmss.000") : "") + ".csv", new[] { headerRow, dataRow });
+            Console.WriteLine();
+            Console.WriteLine("Outputting to " + filename);
+
+            File.WriteAllLines(filename, new[] { headerRow, dataRow });
         }
     }
 }
