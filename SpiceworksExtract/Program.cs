@@ -1,6 +1,6 @@
 ﻿using System;
-using System.Linq;
 using System.IO;
+using System.Linq;
 
 namespace SpiceworksExtract
 {
@@ -9,12 +9,30 @@ namespace SpiceworksExtract
         //Super dirty and no error handling but seems to work
         private static void Main(string[] args)
         {
-            Console.WriteLine("--addTimestamp  - Adds timestamp to output name");
-            Console.WriteLine("--out=\"XXX\"     - Specify output directory, default is current directory");
+            Console.WriteLine("--addTimestamp       - Adds timestamp to output name");
+            Console.WriteLine("--outData            - Sets output directory to application data directory");
+            Console.WriteLine("--outDesktop         - Sets output directory to desktop directory");
+            Console.WriteLine("--outDocuments       - Sets output directory to my documents directory");
+            Console.WriteLine("--out=\"XXX\"          - Specify output directory, default is current directory");
 
             var addTimestamp = args?.Any((a) => a?.ToLower()?.Equals("--addtimestamp") ?? false) ?? false;
 
             var outputDirectory = "";
+
+            if (args?.Any((a) => a?.ToLower()?.Equals("--outdata") ?? false) ?? false)
+            {
+                outputDirectory = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData, Environment.SpecialFolderOption.None);
+            }
+
+            if (args?.Any((a) => a?.ToLower()?.Equals("--outdesktop") ?? false) ?? false)
+            {
+                outputDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Desktop, Environment.SpecialFolderOption.None);
+            }
+
+            if (args?.Any((a) => a?.ToLower()?.Equals("--outdocuments") ?? false) ?? false)
+            {
+                outputDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments, Environment.SpecialFolderOption.None);
+            }
 
             if (args?.Any((a) => a?.ToLower()?.StartsWith("--out=") ?? false) ?? false)
             {
@@ -22,6 +40,11 @@ namespace SpiceworksExtract
                 var outValue = outArg.Substring("--out=".Length);
 
                 outputDirectory = outValue.Trim('"');
+            }
+
+            if (string.IsNullOrWhiteSpace(outputDirectory) == false && outputDirectory.Trim().EndsWith("\\") == false)
+            {
+                outputDirectory += "\\";
             }
 
             var computer = new Spiceworks.Agent.Service.Os.Windows.Message.ComputerInfo().GetComputer();
